@@ -1,0 +1,63 @@
+import random
+
+# Define the size of the board
+BOARD_SIZE = 3
+
+# Create the game board
+board = [['.' for _ in range(BOARD_SIZE+1)] for _ in range(BOARD_SIZE+1)]
+
+# Print the board
+def print_board():
+    for row in board:
+        print(' '.join(row))
+
+# Check if a box has been completed
+def check_box(row, col):
+    box_completed = False
+    if row % 2 == 0 and col % 2 == 0:
+        if board[row-1][col] != '.' and board[row+1][col] != '.' and board[row][col-1] != '.' and board[row][col+1] != '.':
+            board[row][col] = 'X'
+            box_completed = True
+    elif row % 2 != 0 and col % 2 != 0:
+        if board[row][col] != '.' and board[row-1][col] != '.' and board[row+1][col] != '.' and board[row][col-1] != '.' and board[row][col+1] != '.':
+            board[row][col] = 'X'
+            box_completed = True
+    return box_completed
+
+# Main game loop
+player = 1
+while True:
+    print_board()
+    print(f"Player {player}, it's your turn!")
+    row = int(input("Enter the row number: "))
+    col = int(input("Enter the column number: "))
+
+    # Check if the move is valid
+    if row < 0 or row > BOARD_SIZE or col < 0 or col > BOARD_SIZE:
+        print("Invalid move, try again!")
+        continue
+    elif board[row][col] != '.':
+        print("That spot is already taken, try again!")
+        continue
+
+    # Update the board with the move
+    if row % 2 == 0:
+        board[row][col] = '-'
+    else:
+        board[row][col] = '|'
+
+    # Check if a box has been completed
+    if check_box(row, col):
+        print(f"Player {player} completed a box!")
+
+    # Switch to the next player
+    if player == 1:
+        player = 2
+    else:
+        player = 1
+
+    # Check if the game is over
+    if all('.' not in row for row in board):
+        print_board()
+        print("Game over!")
+        break
