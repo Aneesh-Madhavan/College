@@ -1,0 +1,20 @@
+import mechanicalsoup
+
+# Create a browser object
+browser = mechanicalsoup.Browser()
+
+# Define the URL of the website to be scraped
+url = "https://www.bbc.com/"
+
+# Send a GET request to the URL
+response = browser.get(url)
+
+# Parse HTML content using MechanicalSoup
+soup = response.soup
+
+# Find all links in the HTML content
+links = soup.find_all('a')
+
+# Print each link's href attribute value
+for link in links:
+    print(link.get('href'))
