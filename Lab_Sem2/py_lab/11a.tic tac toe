@@ -1,0 +1,37 @@
+board = [' ']*9
+
+def print_board():
+    print(board[0]+'|'+board[1]+'|'+board[2])
+    print('-+-+-')
+    print(board[3]+'|'+board[4]+'|'+board[5])
+    print('-+-+-')
+    print(board[6]+'|'+board[7]+'|'+board[8])
+
+def check_win(player):
+    win_combinations = ((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6))
+    for combo in win_combinations:
+        if all(board[i]==player for i in combo):
+            return True
+    return False
+
+def game():
+    current_player = "X"
+    while True:
+        print_board()
+        cell = int(input(f"{current_player}'s turn - choose a cell (1-9): "))
+        if board[cell-1] == ' ':
+            board[cell-1] = current_player
+            if check_win(current_player):
+                print_board()
+                print(f"{current_player} won!")
+                break
+            elif all(cell != ' ' for cell in board):
+                print_board()
+                print("It's a tie!")
+                break
+            else:
+                current_player = "O" if current_player == "X" else "X"
+        else:
+            print("That cell is already taken. Please choose another one.")
+
+game()
