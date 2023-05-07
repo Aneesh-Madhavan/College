@@ -1,0 +1,23 @@
+import requests
+
+# Define the website URL to check
+url = "https://www.google.com"
+
+# Send a GET request to the website URL
+response = requests.get(url)
+
+# Define a dictionary of common HTTP status codes and their corresponding messages
+status_codes = {
+    200: "Website Available",
+    301: "Permanent Redirect",
+    302: "Temporary Redirect",
+    404: "Not Found",
+    500: "Internal Server Error",
+    503: "Service Unavailable"
+}
+
+# Check if the response status code indicates a successful connection
+if response.status_code in status_codes:
+    print(f"The website {url} is {status_codes[response.status_code]}")
+else:
+    print(f"The website {url} is not live.")
