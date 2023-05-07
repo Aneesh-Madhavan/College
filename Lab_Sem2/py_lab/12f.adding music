@@ -1,0 +1,29 @@
+import pygame
+
+pygame.init()
+
+# set the window size
+win_width = 500
+win_height = 500
+
+# create the game window
+window = pygame.display.set_mode((win_width, win_height))
+
+# load the music file
+pygame.mixer.music.load('background_music.mp3')
+
+# start playing the music
+pygame.mixer.music.play(-1)
+
+# game loop
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+    # fill the window with a color
+    window.fill((255, 255, 255))
+
+    # update the display
+    pygame.display.update()
