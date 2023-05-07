@@ -1,0 +1,65 @@
+import pygame
+import math
+
+# Initialize Pygame
+pygame.init()
+
+# Set the window size
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width, screen_height))
+
+# Load the player image and set its position and rotation
+player_img = pygame.image.load("player.png")
+player_x = screen_width // 2
+player_y = screen_height // 2
+player_angle = 0
+
+# Load the bullet image and set its position and speed
+bullet_img = pygame.image.load("bullet.png")
+bullet_x = player_x
+bullet_y = player_y
+bullet_speed = 10
+bullet_angle = player_angle
+
+# Set the game loop variables
+clock = pygame.time.Clock()
+running = True
+
+# Main game loop
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                player_angle += 10
+            elif event.key == pygame.K_RIGHT:
+                player_angle -= 10
+            elif event.key == pygame.K_SPACE:
+                bullet_x = player_x
+                bullet_y = player_y
+                bullet_angle = player_angle
+
+    # Rotate the player image
+    player_rotated = pygame.transform.rotate(player_img, player_angle)
+
+    # Move the bullet
+    bullet_x += bullet_speed * math.cos(math.radians(bullet_angle))
+    bullet_y += bullet_speed * math.sin(math.radians(bullet_angle))
+
+    # Draw the player and the bullet
+    screen.fill((255, 255, 255))
+    screen.blit(player_rotated, (player_x - player_rotated.get_rect().width // 2, player_y - player_rotated.get_rect().height // 2))
+    bullet_rotated = pygame.transform.rotate(bullet_img, bullet_angle)
+    screen.blit(bullet_rotated, (bullet_x - bullet_rotated.get_rect().width // 2, bullet_y - bullet_rotated.get_rect().height // 2))
+
+    # Update the display
+    pygame.display.update()
+
+    # Limit the frame rate
+    clock.tick(60)
+
+# Quit Pygame
+pygame.quit()
