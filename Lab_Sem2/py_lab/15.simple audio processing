@@ -1,0 +1,9 @@
+from pyo import * # Create a Server object
+s = Server().boot() # Create a sine wave oscillator with a frequency of 440 Hz
+osc = Sine(freq=440, mul=0.5) # Create an envelope generator
+env = Adsr(attack=0.1, decay=0.1, sustain=0.5, release=0.1, dur=1.0) # Connect the oscillator to the envelope generator
+osc = osc * env # Start the envelope generator
+env.play() # Start the audio output
+s.start() # Wait for 5 seconds
+s.gui(locals()) # Stop the audio output
+s.stop()
