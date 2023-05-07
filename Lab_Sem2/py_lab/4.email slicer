@@ -1,0 +1,3 @@
+email = input("enter your email id: ").strip()
+split_mail = email.split("@")
+print(f"the email id exists\nyour username is : {split_mail[0]}\nyour domain is : {split_mail[1]}")
