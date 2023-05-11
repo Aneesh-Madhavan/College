@@ -1,0 +1,39 @@
+print("Method #1")
+a=[]
+n=int(input("Enter the limit:"))
+for i in range(0,n):
+    val=int(input("Enter the values:"))
+    a.append(val)
+Max=a[0]
+Min=a[0]
+for i in a:
+    if i>Max: Max=i
+    if i<Min: Min=i
+print("The maximum element is:",Max)
+print("The minimum element is:",Min)
+
+print("Method #2")
+a=[]
+limit=int(input("Enter number of elements of an array:"))
+for i in range(0,limit):
+    val=int(input("Enter the array elements:"))
+    a.append(val)
+print("The max element is:",max(a))
+print("The min element is:",min(a))
+
+print("Method #3")
+a=[]
+lim=int(input("Enter the limit of the array:"))
+for i in range(0,lim):
+    temp=int(input("Enter the values:"))
+    a.append(temp)
+a.sort()
+print("Min Element")
+print(a[0])
+print("Max Element")
+print(a[-1])
+
+
+
+
+
