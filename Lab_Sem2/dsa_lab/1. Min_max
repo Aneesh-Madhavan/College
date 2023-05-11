@@ -1,3 +1,4 @@
+#iteration method
 print("Method #1")
 a=[]
 n=int(input("Enter the limit:"))
@@ -12,6 +13,7 @@ for i in a:
 print("The maximum element is:",Max)
 print("The minimum element is:",Min)
 
+#using pre-defined functions
 print("Method #2")
 a=[]
 limit=int(input("Enter number of elements of an array:"))
@@ -21,6 +23,7 @@ for i in range(0,limit):
 print("The max element is:",max(a))
 print("The min element is:",min(a))
 
+#using sorting
 print("Method #3")
 a=[]
 lim=int(input("Enter the limit of the array:"))
@@ -32,6 +35,33 @@ print("Min Element")
 print(a[0])
 print("Max Element")
 print(a[-1])
+
+
+#using user-defined functions
+def min(arr,temp):
+    for i in range(1,len(arr)):
+        if(temp < arr[i]):
+            temp = temp
+        else:
+            temp=arr[i]
+    return temp   
+def max(arr,temp):
+    temp = arr[0]
+    for i in range(1,len(arr)):
+        if(temp > arr[i]):
+            temp = temp
+        else:
+            temp=arr[i]
+    return temp
+arr= []
+temp = 0
+n = int(input("enter the number of values: "))
+for i in range (n):
+    print(f"enter value number {i+1}: ",end="")
+    inp=int(input())
+    arr.append(inp)
+temp = arr[0]
+print(f"the smallest element is {min(arr,temp)} and the largest element is {max(arr,temp)}")
 
 
 
