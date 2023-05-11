@@ -8,8 +8,6 @@ def insertion_sort(list1):
                 j -= 1  
             list1[j + 1] = value  
         return list1  
-            # Driver code to test above  
-  
 list1 = [10, 5, 13, 8, 2]  
 print("The unsorted list is:", list1)  
   
