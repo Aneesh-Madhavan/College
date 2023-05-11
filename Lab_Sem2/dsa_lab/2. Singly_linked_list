@@ -1,0 +1,37 @@
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.nxt=None
+class linkedlist:
+    def __init__(self):
+        self.head=None
+    def printlist(self):
+        p=self.head #starts the traversing from head
+        while(p):
+            print(p.data)
+            p=p.nxt
+    def push(self,newdata): #inserting an element at the beginning
+        newnode=node(newdata)
+        newnode.nxt=self.head
+        self.head=newnode
+    def pushatlast(self,newdata): #inserting an element at the end of the list
+        newnode=node(newdata)
+        p=self.head
+        if(p.nxt==None):
+            self.head=newnode
+        while(p.nxt):
+            p=p.nxt
+        newnode.nxt=None
+        p.nxt=newnode
+llist=linkedlist()
+llist.head=node(10)
+second=node(20)
+third=node(30)
+llist.head.nxt=second
+second.nxt=third
+print("The elements before pushing")
+llist.printlist()
+llist.push(5)
+llist.pushatlast(12)
+print("The elements after pushing")
+llist.printlist()
