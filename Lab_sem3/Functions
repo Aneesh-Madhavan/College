@@ -1,0 +1,21 @@
+DECLARE 
+a number;
+b number;
+c number;
+CREATE findmax(x in number, y in number, z out number);
+return z nummber
+IS
+z number;
+BEGIN
+  if x>y THEN
+  z:=x:
+  ELSE
+  z:=y;
+ENDIF:
+END;
+BEGIN
+  a:=5;
+  b:=4;
+  c:=findmax(a,b,c);
+  dbms_output.put_line('Max number is:'||c);
+END;
