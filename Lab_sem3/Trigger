@@ -1,0 +1,16 @@
+Syntax:
+CREATE OR REPLACE TRIGGER trigger_name
+BEFORE|AFTER|INSTEAD OF
+INSERT|UPDATE|DELETE
+ON col_name
+OF table_name
+REFERENCING OLD AS o AND NEW AS n
+FOR EACH ROW
+WHERE [CONDTION]
+DECLARE
+  declare_statements
+BEGIN 
+  begin_statements
+EXCEPTION 
+  exception_statements
+END;
